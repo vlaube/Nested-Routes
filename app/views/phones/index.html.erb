@@ -1,0 +1,29 @@
+<h1>Listing phones</h1>
+
+<p>
+  <b>Person:</b>
+  <%= @person.name %>    
+</p>
+
+<table>
+  <tr>
+    <th>Phone number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @phones.each do |phone| %>
+  <tr>
+    <td><%= phone.phone_number %></td>
+    <td><%= link_to 'Show', person_phone_url(phone.person_id, phone) %></td>
+    <td><%= link_to 'Edit', edit_person_phone_path(phone.person_id, phone) %></td>
+    <td><%= link_to 'Destroy', person_phone_url(phone.person_id, phone), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Phone', new_person_phone_path %> | 
+<%= link_to 'Back', person_path(@person) %>
